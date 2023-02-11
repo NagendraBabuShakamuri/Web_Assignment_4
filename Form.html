@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <title>Feedback</title>
+  <style>
+    label {	float: left;
+			width: 150px;}
+      #container{
+          width: 700px;
+          margin: auto;
+          background-color: beige;
+      } 
+      main{
+          padding: 50px;
+      }
+      .hbt
+	  {
+		  display: none;
+	  }
+	  .cc
+	  {
+		  display: none;
+	  }
+	  .lit
+	  {
+		  display: none;
+	  }
+	  .es
+	  {
+		  display: none;
+	  }
+	  .la
+	  {
+		  display: none;
+	  }
+	  .custom
+	  {
+		  display: none;
+	  }
+	  #table
+	  {
+		  text-align: center;
+		  margin: 2rem auto;
+		  width: 95%;
+	  }
+	  #table thead
+	  {
+		  background-color: grey;
+		  color: #fff;
+	  }
+	  #first, #last, #email, #email, #phone, #addr1, #addr2, #ci, #st, #zip, #drink, #cust, #comm, #social
+	  {
+	  	  color: red;
+	  }
+	  #table th
+	  {
+		  padding: 1rem;
+	  }
+	  #table td
+	  {
+		  padding: 1rem;
+	  }
+	  #table, th, td
+	  {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+	  }
+	  .error
+	  {
+		  display: none;
+	  }
+  </style>
+ </head>
+ <body>
+ <div id="container">
+	 
+	 <main>
+	 <h2>Feedback</h2>
+	 <h3>Love something? Hate something? Let us know!</h3>
+		 Note : Fields marked with an asterisk(*) are mandatory
+		 <br><br>
+		 <form onsubmit="return false" method="post" novalidate>
+			<label>Title*:</label>
+			<input type="radio" name="title" id="miss" value="Miss" required/>Miss
+			<input type="radio" name="title" id="mr" value="Mr" />Mr.
+			<input type="radio" name="title" id="mrs" value="Mrs" />Mrs.
+			<br><br>
+			<label for="firstName">First Name*:</label>
+			<input type="text" name="firstName" id="firstName" placeholder="First Name" oninput="validate(this)" required/> <span id = "first" class = "error">Invalid</span>
+			<br><br>
+			
+
+			<label for="lastName">Last Name*:</label>
+			<input type="text" name="lastName" id="lastName" placeholder="Last Name" oninput="validate(this)" required/> <span id = "last" class = "error">Invalid</span>
+			<br><br>
+			
+
+			<label for="emailId">Email Id*:</label>
+			<input type="text" name="emailId" id="emailId" placeholder="yourname@northeastern.edu" oninput="validate(this)" required/> <span id = "email" class = "error">Invalid</span>
+			<br><br>
+			
+
+			<label for="phoneNumber">Phone Number*:</label>
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" oninput="validate(this)" required/> <span id = "phone" class = "error">Invalid</span>
+			<br><br>
+
+			<label for="streetAddress1">Street Address 1*:</label>
+			<input type="text" name="streetAddress1" id="streetAddress1" placeholder="address" oninput="validate(this)" required/> <span id = "addr1" class = "error">Invalid</span>
+			<br><br>
+
+			<label for="streetAddress2">Street Address 2:</label>
+			<input type="text" name="streetAddress2" id="streetAddress2" placeholder="address" oninput="validate(this)"/> <span id = "addr2" class = "error">Invalid</span>
+			<br><br>
+
+			<label for="city">City*:</label>
+			<input type="text" name="city" id="city" placeholder="city" oninput="validate(this)" required/> <span id = "ci" class = "error">Invalid</span>
+			<br><br>
+
+			<label for="state">State*:</label>
+			<input type="text" name="state" id="state" placeholder="state" oninput="validate(this)" required/> <span id = "st" class = "error">Invalid</span>
+			<br><br>
+			
+            <label for="zipcode">ZipCode*:</label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxx" oninput="validate(this)" required/> <span id = "zip" class = "error">Invalid</span>
+			<br><br>
+             
+            <label for="zipcode">How did you hear*:</label>
+			<input type='checkbox' name="source" value="Facebook" onchange = "socialChecked()"/> Facebook
+            <input type='checkbox' name="source" value="Google"  onchange = "socialChecked()"/> Google
+            <input type='checkbox' name="source" value="Yelp"  onchange = "socialChecked()"/> Yelp
+			 <span id = "social" class="error">Please select at least one option.</span>
+			<br><br>
+
+			 <label for="listbox">Drinks*:</label>
+			 <select name="drinks" id="listbox" onchange="selectedOption(this);">
+				 <option value="default">--Please choose a drink--</option>
+				 <option value="hbt">Hot Black Tea</option>
+				 <option value="cc">Cold Coffee</option>
+				 <option value="lit">Lemon Iced Tea</option>
+				 <option value="es">Espresso</option>
+				 <option value="la">Latte</option>
+			 </select>
+			 <span id = "drink" class = "error">Invalid</span>
+			 <br><br>
+			 <label class = "option1 hbt">Hot Black Tea - Large<br>($1 extra)</label>
+			 <input class = "option1 hbt" type='checkbox' name="hbt" value="" onchange="boxChecked(this)"/>
+
+			 <label class = "option2 cc">Cold Coffee - Large<br>($1 extra)</label>
+			 <input class = "option2 cc" type='checkbox' name="cc" value="" onchange="boxChecked(this)"/>
+
+			 <label class = "option3 lit">LemonIcedTea - Large<br>($1 extra)</label>
+			 <input class = "option3 lit" type='checkbox' name="lit" value="" onchange="boxChecked(this)"/>
+
+			 <label class = "option4 es">Espresso - Large<br>($1 extra)</label>
+			 <input class = "option4 es" type='checkbox' name="es" value="" onchange="boxChecked(this)"/>
+
+			 <label class = "option5 la">Latte - Large<br>($1 extra)</label>
+			 <input class = "option5 la" type='checkbox' name="la" value="" onchange="boxChecked(this)"/>
+
+			 <br><br><br>
+			 <label class = "textarea custom">Any additional customizations*:</label>
+			 <textarea name = "custom" class = "textarea custom" placeholder="Your customizations, write N/A if none" rows = "4" cols = "25" oninput="validate(this)"></textarea> <span id = "cust" class = "error">Invalid</span>
+
+			 <br><br>
+
+			<label for="comments">Comments*:</label>
+			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" oninput="validate(this)" required></textarea> <span id = "comm" class = "error">Invalid</span>
+			<br><br>
+			 <input type="Submit" onclick="submitForm(); return false;">
+			<input type="Reset" onclick = "resetForm()">
+			<br><br>
+		 </form>
+	 </main>
+ </div>
+ <table id = "table">
+	 <thead>
+	 <tr>
+		 <th>Title</th>
+		 <th>First Name</th>
+		 <th>Last Name</th>
+		 <th>Email Id</th>
+		 <th>Phone</th>
+		 <th>Address 1</th>
+		 <th>Address 2</th>
+		 <th>City</th>
+		 <th>State</th>
+		 <th>ZipCode</th>
+		 <th>Referral</th>
+		 <th>Drink</th>
+		 <th>Size</th>
+		 <th>Additional Customizations</th>
+		 <th>Comments</th>
+	 </tr>
+	 </thead>
+ </table>
+
+ <script>
+
+	 function validate(field)
+	 {
+		 if(field.name === "firstName")
+		 {
+			 if(field.value.trim() !== "" && /^[a-zA-Z\s]*$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#first").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#first").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "lastName")
+		 {
+			 if(field.value.trim() !== "" && /^[a-zA-Z\s]*$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#last").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#last").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "emailId")
+		 {
+			 if(field.value.trim() !== "" && /^[A-Za-z0-9+_.-]+@northeastern.edu$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#email").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#email").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "phoneNumber")
+		 {
+			 if(field.value.trim() !== "" && /^\d{3}-\d{3}-\d{4}$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#phone").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#phone").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "streetAddress1")
+		 {
+			 if(field.value.trim() !== "" && /^[^<>'\";`%]*$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#addr1").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#addr1").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "streetAddress2")
+		 {
+			 if(/^[^<>'\";`%]*$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#addr2").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#addr2").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "city")
+		 {
+			 if(field.value.trim() !== "" && /^[a-zA-Z]*$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#ci").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#ci").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "state")
+		 {
+			 if(field.value.trim() !== "" && /^[a-zA-Z\s]*$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#st").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#st").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "zipcode")
+		 {
+			 if(field.value.trim() !== "" && /^\d{5}$/.test(field.value.trim()))
+			 {
+				 document.querySelector("#zip").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#zip").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "custom")
+		 {
+			 if(field.value.trim() !== "")
+			 {
+				 document.querySelector("#cust").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#cust").classList.remove("error");
+				 return;
+			 }
+		 }
+		 else if(field.name === "text")
+		 {
+			 if(field.value.trim() !== "")
+			 {
+				 document.querySelector("#comm").classList.add("error");
+			 }
+			 else
+			 {
+				 document.querySelector("#comm").classList.remove("error");
+				 return;
+			 }
+		 }
+	 }
+  function selectedOption(select)
+  {
+	  let selectedItem = select.value;
+	  document.getElementsByClassName("option1")[0].classList.add("hbt");
+	  document.getElementsByClassName("option1")[1].classList.add("hbt");
+	  document.getElementsByClassName("option1")[1].checked = false;
+
+	  document.getElementsByClassName("option2")[0].classList.add("cc");
+	  document.getElementsByClassName("option2")[1].classList.add("cc");
+	  document.getElementsByClassName("option2")[1].checked = false;
+
+	  document.getElementsByClassName("option3")[0].classList.add("lit");
+	  document.getElementsByClassName("option3")[1].classList.add("lit");
+	  document.getElementsByClassName("option3")[1].checked = false;
+
+	  document.getElementsByClassName("option4")[0].classList.add("es");
+	  document.getElementsByClassName("option4")[1].classList.add("es");
+	  document.getElementsByClassName("option4")[1].checked = false;
+
+	  document.getElementsByClassName("option5")[0].classList.add("la");
+	  document.getElementsByClassName("option5")[1].classList.add("la");
+	  document.getElementsByClassName("option5")[1].checked = false;
+
+	  document.getElementsByClassName("textarea")[0].classList.add("custom");
+	  document.getElementsByClassName("textarea")[1].classList.add("custom");
+	  document.getElementsByClassName("textarea")[1].checked = false;
+
+	  document.querySelector("#drink").classList.add("error");
+	  switch(selectedItem)
+	  {
+		  case "hbt":
+			  document.getElementsByClassName("option1")[0].classList.remove("hbt");
+			  document.getElementsByClassName("option1")[1].classList.remove("hbt");
+			  break;
+		  case "cc":
+			  document.getElementsByClassName("option2")[0].classList.remove("cc");
+			  document.getElementsByClassName("option2")[1].classList.remove("cc");
+			  break;
+		  case "lit":
+			  document.getElementsByClassName("option3")[0].classList.remove("lit");
+			  document.getElementsByClassName("option3")[1].classList.remove("lit");
+			  break;
+		  case "es":
+			  document.getElementsByClassName("option4")[0].classList.remove("es");
+			  document.getElementsByClassName("option4")[1].classList.remove("es");
+			  break;
+		  case "la":
+			  document.getElementsByClassName("option5")[0].classList.remove("la");
+			  document.getElementsByClassName("option5")[1].classList.remove("la");
+			  break;
+		  default:
+			  document.querySelector("#drink").classList.remove("error");
+	  }
+  }
+  function boxChecked(checkbox)
+  {
+	  if(checkbox.checked)
+	  {
+		  document.getElementsByClassName("textarea")[0].classList.remove("custom");
+		  document.getElementsByClassName("textarea")[1].classList.remove("custom");
+	  }
+	  else
+	  {
+		  document.getElementsByClassName("textarea")[0].classList.add("custom");
+		  document.getElementsByClassName("textarea")[1].classList.add("custom");
+		  document.querySelector("#cust").classList.add("error");
+	  }
+  }
+
+  function resetForm()
+  {
+	  document.getElementsByClassName("option1")[0].classList.add("hbt");
+	  document.getElementsByClassName("option1")[1].classList.add("hbt");
+
+	  document.getElementsByClassName("option2")[0].classList.add("cc");
+	  document.getElementsByClassName("option2")[1].classList.add("cc");
+
+	  document.getElementsByClassName("option3")[0].classList.add("lit");
+	  document.getElementsByClassName("option3")[1].classList.add("lit");
+
+	  document.getElementsByClassName("option4")[0].classList.add("es");
+	  document.getElementsByClassName("option4")[1].classList.add("es");
+
+	  document.getElementsByClassName("option5")[0].classList.add("la");
+	  document.getElementsByClassName("option5")[1].classList.add("la");
+
+	  document.getElementsByClassName("textarea")[0].classList.add("custom");
+	  document.getElementsByClassName("textarea")[1].classList.add("custom");
+  }
+
+  function socialChecked()
+  {
+	  document.getElementById("social").classList.add("error");
+  }
+  function  submitForm(){
+	  if(!document.querySelector("form").reportValidity())
+		  return;
+	  let title = document.getElementsByName("title");
+	  for(let i = 0; i < title.length; i++) {
+		  if(title[i].checked)
+			  title = title[i].value;
+	  }
+
+	  let firstName = document.getElementById("firstName").value.trim();
+
+	  if(firstName !== "" && /^[a-zA-Z\s]*$/.test(firstName))
+		  document.querySelector("#first").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#first").classList.remove("error");
+		  return;
+	  }
+
+	  let lastName = document.getElementById("lastName").value.trim();
+
+	  if(lastName !== "" && /^[a-zA-Z\s]*$/.test(lastName))
+		  document.querySelector("#first").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#first").classList.remove("error");
+		  return;
+	  }
+
+	  let emailId = document.getElementById("emailId").value.trim();
+
+	  if(emailId !== "" && /^[A-Za-z0-9+_.-]+@northeastern.edu$/.test(emailId))
+		  document.querySelector("#email").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#email").classList.remove("error");
+		  return;
+	  }
+
+	  let phoneNumber = document.getElementById("phoneNumber").value.trim();
+
+	  if(phoneNumber !== "" && /^\d{3}-\d{3}-\d{4}$/.test(phoneNumber))
+		  document.querySelector("#phone").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#phone").classList.remove("error");
+		  return;
+	  }
+
+	  let streetAddress1 = document.getElementById("streetAddress1").value.trim();
+
+	  if(streetAddress1 !== "" && /^[^<>'\";`%]*$/.test(streetAddress1))
+		  document.querySelector("#addr1").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#addr1").classList.remove("error");
+		  return;
+	  }
+
+	  let streetAddress2 = document.getElementById("streetAddress2").value.trim();
+
+	  if(/^[^<>'\";`%]*$/.test(streetAddress2))
+		  document.querySelector("#addr2").classList.add("error");
+	  else
+		  document.querySelector("#addr2").classList.remove("error");
+
+	  let city = document.getElementById("city").value.trim();
+
+	  if(city !== "" && /^[a-zA-Z]*$/.test(city))
+		  document.querySelector("#ci").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#ci").classList.remove("error");
+		  return;
+	  }
+
+	  let state = document.getElementById("state").value.trim();
+
+	  if(state !== "" && /^[^<>'\";`%]*$/.test(state))
+		  document.querySelector("#st").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#st").classList.remove("error");
+		  return;
+	  }
+
+	  let zipCode = document.getElementById("zipcode").value.trim();
+
+	  if(zipCode !== "" && /^\d{5}$/.test(zipCode))
+		  document.querySelector("#zip").classList.add("error");
+	  else
+	  {
+		  document.querySelector("#zip").classList.remove("error");
+		  return;
+	  }
+
+	  let referral = document.getElementsByName("source");
+	  let referralResult = "";
+
+	  for (let i = 0; i < referral.length; i++) {
+		  if (referral[i].checked) {
+			  referralResult += referral[i].value + ", ";
+		  }
+	  }
+	  referralResult = referralResult.slice(0, referralResult.length - 2);
+	  if(referralResult === "")
+	  {
+		  document.querySelector("#social").classList.remove("error");
+		  return;
+	  }
+
+	  let drink = document.getElementsByName("drinks");
+	  let selectedDrink = "";
+	  for(let i = 0; i < drink[0].length; i++) {
+		  if(drink[0][i].selected)
+		  {
+			  selectedDrink = drink[0][i].innerText;
+			  break;
+		  }
+	  }
+	  if(selectedDrink === "--Please choose a drink--")
+	  {
+		  document.querySelector("#drink").classList.remove("error");
+		  return;
+	  }
+	  let size = "Small";
+	  let customization = "";
+	  if(document.getElementsByName("hbt")[0].checked === true || document.getElementsByName("cc")[0].checked === true || document.getElementsByName("lit")[0].checked === true || document.getElementsByName("es")[0].checked === true || document.getElementsByName("la")[0].checked === true)
+	  {
+		  size = "Large";
+		  customization = document.getElementsByClassName("textarea")[1].value.trim();
+
+		  if(customization === "")
+		  {
+			  document.querySelector("#cust").classList.remove("error");
+			  return;
+		  }
+	  }
+
+	  let comments = document.getElementById("comments").value.trim();
+
+	  if(comments === "")
+	  {
+		  document.querySelector("#comm").classList.remove("error");
+		  return;
+	  }
+
+      document.getElementById("table").innerHTML += `<tr>
+									<td>${title}</td>
+									<td>${firstName}</td>
+									<td>${lastName}</td>
+									<td>${emailId}</td>
+									<td>${phoneNumber}</td>
+									<td>${streetAddress1}</td>
+									<td>${streetAddress2}</td>
+									<td>${city}</td>
+									<td>${state}</td>
+									<td>${zipCode}</td>
+									<td>${referralResult}</td>
+									<td>${selectedDrink}</td>
+									<td>${size}</td>
+									<td>${customization}</td>
+									<td>${comments}</td>
+									</tr>`;
+
+	  document.querySelector("form").reset();
+	  resetForm();
+  }
+ </script>
+
+ </body>
+</html>
